@@ -1,7 +1,8 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
+use App\Models\Category;
 use Illuminate\Database\Eloquent\Model;
 
 class Product extends Model
@@ -21,6 +22,11 @@ class Product extends Model
     public function store()
     {
         return $this->belongsTo(Store::class);
+    }
+
+    public function caegories()
+    {
+        return $this->belongsToMany(Category::class, 'category_product');
     }
 
 }
