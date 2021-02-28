@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Store;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
@@ -14,14 +15,8 @@ class UsersTableSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('users')->insert(
-            [
-                'name' => 'Administrador',
-                'email' => 'admin@emal.com',
-                'password' => Hash::make('1234578'),
-            ]
-        );
-
-        factory(User::class, 25)->create();
+        factory(User::class, 25)->create()->each(function ($user) {
+            $user->store()->save(factory(Store::class)->make());
+        });
     }
 }
