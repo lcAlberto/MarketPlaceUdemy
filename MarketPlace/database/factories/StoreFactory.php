@@ -10,7 +10,7 @@ $factory->define(Store::class, function (Faker $faker) {
         'name' => $faker->name,
         'description' => $faker->sentence,
         'phone' => $faker->phoneNumber,
-        'mobile_phone' => $faker->phoneNumber,
         'slug' => $faker->slug,
+        'logo' => $faker->name,
     ];
 });
