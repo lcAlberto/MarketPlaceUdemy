@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Store;
 use App\Models\User;
 use Illuminate\Http\Request;
+use mysql_xdevapi\Exception;
 
 class StoreController extends Controller
 {
@@ -27,23 +28,57 @@ class StoreController extends Controller
 
     public function store(Request $request)
     {
-        $data = $request->all();
+        try {
+            $data = $request->all();
 
-        $user = User::find($data['user_id']);
-        $store = $user->store()->create($data);
+            $user = User::find($data['user_id']);
+            $store = $user->store()->create($data);
 
-        return $store;
+            flash('Loja criada com sucesso')->success();
+        } catch (Exception $e) {
+            flash('Erro ao criar Loja')->error();
+        }
+
+        return redirect()->route('admin.store.index');
     }
 
     public function edit($store)
     {
         $currentStore = Store::find($store);
+        $users = User::all();
 
-        return view('admin.stores.edit', compact('currentStore'));
+        return view('admin.stores.edit', compact('currentStore', 'users'));
     }
 
-    public function update(Request $request)
+    public function update(Request $request, $store)
     {
-        dd($request->all());
+        try {
+            $data = $request->all();
+
+            $currentStore = Store::find($store);
+            $currentStore->update($data);
+
+            flash('Loja Atualizada!')->success();
+        } catch (Exception $e) {
+            flash('Erro ao Atualizar Loja!')->error();
+        }
+
+        return redirect()->route('admin.store.index');
+    }
+
+    public function destroy($store)
+    {
+        try {
+            $currentStore = Store::find($store);
+            $currentStore->delete();
+
+            flash('Loja Removida com sucesso')->success();
+
+        } catch (Exception $e) {
+            flash('Erro ao Remover Loja')->error();
+        }
+
+        return redirect()->route('admin.store.index');
+
     }
 }
