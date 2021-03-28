@@ -35,7 +35,10 @@
             </select>
         </div>
         <div class="form-group">
-            <button type="submit" class="btn btn-outline-primary">Enviar</button>
+            <button type="submit" class="btn btn-block btn-primary">
+                <i class="fa fa-save mr-2"></i>
+                Enviar
+            </button>
         </div>
 
     </form>
