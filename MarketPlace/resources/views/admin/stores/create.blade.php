@@ -4,7 +4,7 @@
 
     <h1>Criar Loja</h1>
 
-    <form method="post" action="{{route('admin.store.store')}}" enctype="multipart/form-data">
+    <form method="post" action="{{route('admin.stores.store')}}" enctype="multipart/form-data">
         @csrf
         <div class="form-group">
             <label for="name">Nome da Loja</label>
