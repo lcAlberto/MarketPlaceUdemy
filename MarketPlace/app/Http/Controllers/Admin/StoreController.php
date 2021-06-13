@@ -5,8 +5,8 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Store;
 use App\Models\User;
+use Exception;
 use Illuminate\Http\Request;
-use mysql_xdevapi\Exception;
 
 class StoreController extends Controller
 {

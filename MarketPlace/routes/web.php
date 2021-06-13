@@ -15,13 +15,15 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::prefix('admin')->namespace('Admin')->group(function (){
+Route::prefix('admin')->name('admin.')->namespace('Admin')->group(function (){
     Route::prefix('stores')->group(function (){
-        Route::get('/', 'StoreController@index')->name('admin.store.index');
-        Route::get('/create', 'StoreController@create')->name('admin.store.create');
-        Route::post('/store', 'StoreController@store')->name('admin.store.store');
-        Route::get('/{store}/edit', 'StoreController@edit')->name('admin.store.edit');
-        Route::post('update/{store}', 'StoreController@update')->name('admin.store.update');
-        Route::get('destroy/{store}', 'StoreController@destroy')->name('admin.store.destroy');
+        Route::get('/', 'StoreController@index')->name('store.index');
+        Route::get('/create', 'StoreController@create')->name('store.create');
+        Route::post('/store', 'StoreController@store')->name('store.store');
+        Route::get('/{store}/edit', 'StoreController@edit')->name('store.edit');
+        Route::post('update/{store}', 'StoreController@update')->name('store.update');
+        Route::get('destroy/{store}', 'StoreController@destroy')->name('store.destroy');
     });
+
+    Route::resource('products', 'ProductController');
 });
