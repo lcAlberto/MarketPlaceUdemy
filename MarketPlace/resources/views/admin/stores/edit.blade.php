@@ -4,8 +4,9 @@
 
     <h1>Editar Loja</h1>
 
-    <form method="post" action="{{route('admin.store.update', $currentStore->id)}}" enctype="multipart/form-data">
+    <form method="post" action="{{route('admin.stores.update', $currentStore->id)}}" enctype="multipart/form-data">
         @csrf
+        @method('PUT')
         <div class="form-group">
             <label for="name">Nome da Loja</label>
             <input

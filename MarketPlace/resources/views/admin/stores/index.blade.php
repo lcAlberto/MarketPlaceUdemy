@@ -9,7 +9,7 @@
             </div>
             <div class="col-3 float-right">
                 <a
-                    href="{{ route('admin.store.create') }}"
+                    href="{{ route('admin.stores.create') }}"
                     class="btn btn-block btn-primary">
                     <i class="fa fa-plus mr-2"></i>
                     Criar nova Loja
@@ -37,18 +37,22 @@
                         <td>{{$store->description}}</td>
                         <td>{{$store->phone}}</td>
                         <td class="btn-group">
-                            <a
-                                href="{{ route('admin.store.edit', $store->id) }}"
-                                class="btn btn-success">
-                                <i class="fa fa-pencil mr-2"></i>
-                                Editar
-                            </a>
-                            <a
-                                href="{{ route('admin.store.destroy', $store->id) }}"
-                                class="btn btn-danger">
-                                <i class="fa fa-trash mr-2"></i>
-                                Excluir
-                            </a>
+                            <form action="{{ route('admin.stores.destroy', $store->id) }}" method="post">
+                                @csrf
+                                @method('DELETE')
+                                <a
+                                    href="{{ route('admin.stores.edit', $store->id) }}"
+                                    class="btn btn-success">
+                                    <i class="fa fa-pencil mr-2"></i>
+                                    Editar
+                                </a>
+                                <button
+                                    type="submit"
+                                    class="btn btn-danger">
+                                    <i class="fa fa-trash mr-2"></i>
+                                    Excluir
+                                </button>
+                            </form>
 
                         </td>
                     </tr>

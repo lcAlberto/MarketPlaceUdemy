@@ -39,7 +39,7 @@ class StoreController extends Controller
             flash('Erro ao criar Loja')->error();
         }
 
-        return redirect()->route('admin.store.index');
+        return redirect()->route('admin.stores.index');
     }
 
     public function edit($store)
@@ -63,7 +63,7 @@ class StoreController extends Controller
             flash('Erro ao Atualizar Loja!')->error();
         }
 
-        return redirect()->route('admin.store.index');
+        return redirect()->route('admin.stores.index');
     }
 
     public function destroy($store)
@@ -78,7 +78,7 @@ class StoreController extends Controller
             flash('Erro ao Remover Loja')->error();
         }
 
-        return redirect()->route('admin.store.index');
+        return redirect()->route('admin.stores.index');
 
     }
 }

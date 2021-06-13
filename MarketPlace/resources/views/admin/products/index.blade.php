@@ -24,7 +24,7 @@
                     <th>thumbnail</th>
                     <th>Nome</th>
                     <th>Preço</th>
-                    <th>Id da Loja</th>
+                    <th>Loja</th>
                     <th>Ações</th>
                 </tr>
                 </thead>
@@ -36,7 +36,7 @@
                         <td>{{$product->name}}</td>
 {{--                        <td>{{number_format($product->price, 2, ',', '.')}}</td>--}}
                         <td>{{$product->price}}</td>
-                        <td>{{$product->store_id}}</td>
+                        <td>{{$product->store->name}}</td>
                         <td class="btn-group">
                             <form action="{{ route('admin.products.destroy', $product) }}" method="post">
                                 @csrf
