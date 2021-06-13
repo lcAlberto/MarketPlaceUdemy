@@ -16,3 +16,4 @@ yarn-error.log
 .idea/workspace.xml
 .idea/MarketPlace.iml
 package-lock.json
+.idea
