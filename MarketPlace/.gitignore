@@ -15,3 +15,4 @@ yarn-error.log
 .idea/phpunit.xml
 .idea/workspace.xml
 .idea/MarketPlace.iml
+package-lock.json
