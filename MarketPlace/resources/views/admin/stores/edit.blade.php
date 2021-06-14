@@ -58,16 +58,6 @@
             >
         </div>
         <div class="form-group">
-            <label for="user_id">Usuário</label>
-            <select id="user_id" name="user_id" class="form-control">
-                @foreach($users as $user)
-                    <option value="{{$user->id}}">
-                        {{'[ ' . $user->id . ' ]' . ' - ' . $user->name}}
-                    </option>
-                @endforeach
-            </select>
-        </div>
-        <div class="form-group">
             <button type="submit" class="btn btn-block btn-success">
                 <i class="fa fa-pencil mr-2"></i>
                 Enviar
