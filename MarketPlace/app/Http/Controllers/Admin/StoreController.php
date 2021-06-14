@@ -31,8 +31,8 @@ class StoreController extends Controller
         try {
             $data = $request->all();
 
-            $user = User::find($data['user_id']);
-            $store = $user->store()->create($data);
+            $currentUser = auth()->user();
+            $store = $currentUser->store()->create($data);
 
             flash('Loja criada com sucesso')->success();
         } catch (Exception $e) {
@@ -55,8 +55,8 @@ class StoreController extends Controller
         try {
             $data = $request->all();
 
-            $currentStore = Store::find($store);
-            $currentStore->update($data);
+            $currentUser = auth()->user();
+            $currentUser->update($data);
 
             flash('Loja Atualizada!')->success();
         } catch (Exception $e) {
