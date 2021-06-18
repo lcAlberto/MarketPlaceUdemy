@@ -10,10 +10,10 @@
             <li class="nav-item {{request()->is('home') ? 'active' : ''}}">
                 <a class="nav-link" href="{{route('home')}}">Home <span class="sr-only">(current)</span></a>
             </li>
-            <li class="nav-item {{request()->is('admin/stores') ? 'active' : ''}}">
+            <li class="nav-item {{request()->is('admin/stores*') ? 'active' : ''}}">
                 <a class="nav-link" href="{{route('admin.stores.index')}}">Lojas</a>
             </li>
-            <li class="nav-item"{{request()->is('admin/products') ? 'active' : ''}}">
+            <li class="nav-item"{{request()->is('admin/products*') ? 'active' : ''}}">
             <a class="nav-link" href="{{route('admin.products.index')}}">Products</a>
             </li>
         </ul>
