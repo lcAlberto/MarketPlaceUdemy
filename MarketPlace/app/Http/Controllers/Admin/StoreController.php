@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\StoreRequest;
 use App\Models\Store;
 use App\Models\User;
 use Exception;
@@ -26,7 +27,7 @@ class StoreController extends Controller
         return view('admin.stores.create', compact('users'));
     }
 
-    public function store(Request $request)
+    public function store(StoreRequest $request)
     {
         try {
             $data = $request->all();
@@ -50,7 +51,7 @@ class StoreController extends Controller
         return view('admin.stores.edit', compact('currentStore', 'users'));
     }
 
-    public function update(Request $request, $store)
+    public function update(StoreRequest $request, $store)
     {
         try {
             $data = $request->all();

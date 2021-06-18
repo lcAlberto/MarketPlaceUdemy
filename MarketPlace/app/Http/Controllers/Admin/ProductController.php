@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\ProductRequest;
 use App\Models\Product;
 use App\Models\Store;
 use Exception;
@@ -32,7 +33,7 @@ class ProductController extends Controller
         return view('admin.products.create', compact('stores'));
     }
 
-    public function store(Request $request)
+    public function store(ProductRequest $request)
     {
         try {
             $data = $request->all();
@@ -60,7 +61,7 @@ class ProductController extends Controller
         return view('admin.products.edit', compact('stores', 'product'));
     }
 
-    public function update(Request $request, $product)
+    public function update(ProductRequest $request, $product)
     {
         try {
             $data = $request->all();

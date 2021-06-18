@@ -6,26 +6,7 @@
 
     <form method="post" action="{{route('admin.stores.store')}}" enctype="multipart/form-data">
         @csrf
-        <div class="form-group">
-            <label for="name">Nome da Loja</label>
-            <input type="text" id="name" name="name" class="form-control">
-        </div>
-        <div class="form-group">
-            <label for="description">Descrição</label>
-            <input type="text" id="description" name="description" class="form-control">
-        </div>
-        <div class="form-group">
-            <label for="phone">Telefone</label>
-            <input type="text" id="phone" name="phone" class="form-control">
-        </div>
-        <div class="form-group">
-            <label for="slug">Slug</label>
-            <input type="text" id="slug" name="slug" class="form-control">
-        </div>
-        <div class="form-group">
-            <label for="logo">Logo</label>
-            <input type="text" id="logo" name="logo" class="form-control">
-        </div>
+        @include('admin.stores.partials.form')
         <div class="form-group">
             <button type="submit" class="btn btn-block btn-primary">
                 <i class="fa fa-save mr-2"></i>
