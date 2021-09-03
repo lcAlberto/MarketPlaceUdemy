@@ -4,7 +4,7 @@
 
     <h1>Editar Loja</h1>
 
-    <form method="post" action="{{route('admin.stores.update', $currentStore->id)}}" enctype="multipart/form-data">
+    <form method="post" action="{{route('admin.stores.update', $store->id)}}" enctype="multipart/form-data">
         @csrf
         @method('PUT')
         @include('admin.stores.partials.form')

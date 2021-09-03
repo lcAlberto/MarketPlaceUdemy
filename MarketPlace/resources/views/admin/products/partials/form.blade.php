@@ -73,17 +73,17 @@
         <small class="text-danger">{{$message}}</small>
         @enderror
     </div>
-    <div class="form-group">
-        <label for="store_id">Loja</label>
-        <select id="store_id" name="store_id" class="form-control @error('store_id') is-invalid @enderror">
-            <option value="" selected>Selecione</option>
-            @foreach($stores as $store)
-                <option value="{{$store->id}}" {{old('store_id') ? 'selected' : '' }}>
-                    {{'[ ' . $store->id . ' ]' . ' - ' . $store->name}}
-                </option>
-            @endforeach
-        </select>
-    </div>
+{{--    <div class="form-group">--}}
+{{--        <label for="store_id">Loja</label>--}}
+{{--        <select id="store_id" name="store_id" class="form-control @error('store_id') is-invalid @enderror">--}}
+{{--            <option value="" selected>Selecione</option>--}}
+{{--            @foreach($stores as $store)--}}
+{{--                <option value="{{$store->id}}" {{old('store_id') ? 'selected' : '' }}>--}}
+{{--                    {{'[ ' . $store->id . ' ]' . ' - ' . $store->name}}--}}
+{{--                </option>--}}
+{{--            @endforeach--}}
+{{--        </select>--}}
+{{--    </div>--}}
     @error('store_id')
     <small class="text-danger">{{$message}}</small>
     @enderror

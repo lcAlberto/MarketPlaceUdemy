@@ -38,7 +38,7 @@ class ProductController extends Controller
         try {
             $data = $request->all();
 
-            $store = Store::find($data['store_id']);
+            $store = auth()->user()->store;
             $store->products()->create($data);
             flash('Produto criado com sucesso!')->success();
         } catch (Exception $e) {
@@ -57,8 +57,8 @@ class ProductController extends Controller
     public function edit($id)
     {
         $product = Product::find($id);
-        $stores = Store::all('id', 'name');
-        return view('admin.products.edit', compact('stores', 'product'));
+        $store = auth()->user()->store;
+        return view('admin.products.edit', compact('store', 'product'));
     }
 
     public function update(ProductRequest $request, $product)

@@ -5,7 +5,7 @@
         id="name"
         name="name"
         class="form-control @error('name') is-invalid @enderror"
-        value="{{old('name', $currentStore->name ?? '') }}">
+        value="{{old('name', $store->name ?? '') }}">
     <sup class="text-danger"></sup>
     @error('name')
     <small class="text-danger">{{$message}}</small>
@@ -18,7 +18,7 @@
         id="description"
         name="description"
         class="form-control @error('description') is-invalid @enderror"
-        value="{{old('description', $currentStore->description ?? '') }}">
+        value="{{old('description', $store->description ?? '') }}">
     @error('description')
     <small class="text-danger">{{$message}}</small>
     @enderror
@@ -30,7 +30,7 @@
         id="phone"
         name="phone"
         class="form-control @error('phone') is-invalid @enderror"
-        value="{{old('phone', $currentStore->phone ?? '') }}">
+        value="{{old('phone', $store->phone ?? '') }}">
     @error('phone')
     <small class="text-danger">{{$message}}</small>
     @enderror
@@ -42,7 +42,7 @@
         id="slug"
         name="slug"
         class="form-control @error('slug') is-invalid @enderror"
-        value="{{old('slug', $currentStore->slug ?? '') }}">
+        value="{{old('slug', $store->slug ?? '') }}">
     @error('slug')
     <small class="text-danger">{{$message}}</small>
     @enderror
@@ -54,7 +54,7 @@
         id="logo"
         name="logo"
         class="form-control @error('logo') is-invalid @enderror"
-        value="{{old('logo', $currentStore->logo ?? '') }}">
+        value="{{old('logo', $store->logo ?? '') }}">
     @error('logo')
     <small class="text-danger">{{$message}}</small>
     @enderror
