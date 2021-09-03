@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\ProductRequest;
 use App\Models\Product;
 use App\Models\Store;
 use Exception;
@@ -33,12 +32,12 @@ class ProductController extends Controller
         return view('admin.products.create', compact('stores'));
     }
 
-    public function store(ProductRequest $request)
+    public function store(Request $request)
     {
         try {
             $data = $request->all();
 
-            $store = auth()->user()->store;
+            $store = Store::find($data['store_id']);
             $store->products()->create($data);
             flash('Produto criado com sucesso!')->success();
         } catch (Exception $e) {
@@ -57,11 +56,11 @@ class ProductController extends Controller
     public function edit($id)
     {
         $product = Product::find($id);
-        $store = auth()->user()->store;
-        return view('admin.products.edit', compact('store', 'product'));
+        $stores = Store::all('id', 'name');
+        return view('admin.products.edit', compact('stores', 'product'));
     }
 
-    public function update(ProductRequest $request, $product)
+    public function update(Request $request, $product)
     {
         try {
             $data = $request->all();
