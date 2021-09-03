@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\StoreRequest;
 use App\Models\Store;
 use App\Models\User;
 use Exception;
@@ -13,16 +12,11 @@ class StoreController extends Controller
 {
     private $paginate = 15;
 
-    public function __construct()
-    {
-        $this->middleware('user.store')->only(['create', 'store']);
-    }
-
     public function index()
     {
-        $store = auth()->user()->store;
+        $stores = Store::paginate($this->paginate);
 
-        return view('admin.stores.index', compact('store'));
+        return view('admin.stores.index', compact('stores'));
     }
 
     public function create()
@@ -32,13 +26,13 @@ class StoreController extends Controller
         return view('admin.stores.create', compact('users'));
     }
 
-    public function store(StoreRequest $request)
+    public function store(Request $request)
     {
         try {
             $data = $request->all();
 
-            $currentUser = auth()->user();
-            $store = $currentUser->store()->create($data);
+            $user = User::find($data['user_id']);
+            $store = $user->store()->create($data);
 
             flash('Loja criada com sucesso')->success();
         } catch (Exception $e) {
@@ -48,19 +42,21 @@ class StoreController extends Controller
         return redirect()->route('admin.stores.index');
     }
 
-    public function edit(Store $store)
+    public function edit($store)
     {
-        return view('admin.stores.edit', compact('store'));
+        $currentStore = Store::find($store);
+        $users = User::all();
+
+        return view('admin.stores.edit', compact('currentStore', 'users'));
     }
 
-    public function update(StoreRequest $request, Store $store)
+    public function update(Request $request, $store)
     {
         try {
             $data = $request->all();
 
-            $store->user()->update($data);
-//            $currentUser = auth()->user();
-//            $currentUser->update($data);
+            $currentStore = Store::find($store);
+            $currentStore->update($data);
 
             flash('Loja Atualizada!')->success();
         } catch (Exception $e) {
@@ -70,10 +66,11 @@ class StoreController extends Controller
         return redirect()->route('admin.stores.index');
     }
 
-    public function destroy(Store $store)
+    public function destroy($store)
     {
         try {
-            $store->delete();
+            $currentStore = Store::find($store);
+            $currentStore->delete();
 
             flash('Loja Removida com sucesso')->success();
 
